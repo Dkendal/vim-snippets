@@ -129,3 +129,31 @@ snippet lld
 	[${1}](${2}){
 		${3}
 	}
+
+# Method stubs
+snippet acc
+	${2:type} ${4:Class}::Get${1:Method}()
+	{
+		return this->${3:field};
+	}
+	void ${4}::Set$1($2 $3)
+	{
+		this->$3 = $3;
+	}
+# GTests
+snippet test
+	TEST(${1:MethodUnderTest}, ${2:TestName})
+	{
+	${3}
+	}
+
+snippet fixt
+	class ${1:Class}Test : public ::testing::Test
+	{
+	  protected:
+		virtual void SetUp()
+		{
+			${2:/* setup body */}
+		}
+		${3:/* member variables */}
+	};
